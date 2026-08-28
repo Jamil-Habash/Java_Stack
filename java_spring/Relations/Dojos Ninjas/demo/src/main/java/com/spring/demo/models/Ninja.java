@@ -52,10 +52,11 @@ public class Ninja {
     public Ninja() {
     }
 
-    public Ninja(String firstName, String lastName, int age) {
+    public Ninja(String firstName, String lastName, int age, Dojo dojo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.dojo = dojo;
     }
 
     // Getters and Setters
@@ -90,6 +91,14 @@ public class Ninja {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Dojo getDojo() {
+        return dojo;
+    }
+
+    public void setDojo(Dojo dojo) {
+        this.dojo = dojo;
     }
 
     public Date getCreatedAt() {

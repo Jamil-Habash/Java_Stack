@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Show</title>
 </head>
 <body>
-    <c:set var="currentPath" value="${pageContext.request.requestURI}" />
-    <c:if test="${currentPath.endsWith('/dojos/new')}">
+    <c:if test="${currentUrl.endsWith('/add/dojo')}">
         <h1>Add New Dojo</h1>
         <form:form action="/dojos/new" method="post" modelAttribute="dojo">
             <p>
@@ -20,7 +20,7 @@
         </form:form>
     </c:if>
 
-    <c:if test="${currentPath.endsWith('/ninjas/new')}">
+    <c:if test="${currentUrl.endsWith('/add/ninja')}">
         <h1>Add New Ninja</h1>
         <form:form action="/ninjas/new" method="post" modelAttribute="ninja">
             <p>
@@ -41,7 +41,7 @@
                 <form:input path="lastName"/>
             </p>
             <p>
-                <form:label path="ahe">Age:</form:label>
+                <form:label path="age">Age:</form:label>
                 <form:errors path="age"/>
                 <form:input type="number" path="age"/>
             </p>

@@ -13,6 +13,8 @@ import com.spring.demo.models.*;
 import com.spring.demo.repositories.DojoRepository;
 import com.spring.demo.repositories.NinjaRepository;
 import com.spring.demo.services.*;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import java.util.*;
 import org.springframework.ui.Model;
@@ -74,6 +76,21 @@ public class MainController {
         session.setAttribute("name", dojo.getName());
         session.setAttribute("ninjas", dojo.getNinjas());
         return "ninjas";
+    }
+
+    @RequestMapping("/add/dojo")
+    public String showDojosNew(Model model, HttpServletRequest request) {
+        model.addAttribute("dojo", new Dojo());
+        model.addAttribute("currentUrl", request.getRequestURI());
+        return "new";
+    }
+
+    @RequestMapping("/add/ninja")
+    public String showNinjasNew(Model model, HttpServletRequest request) {
+        model.addAttribute("ninja", new Ninja());
+        model.addAttribute("dojos", dojoService.allDojos());
+        model.addAttribute("currentUrl", request.getRequestURI());
+        return "new";
     }
     
 }
